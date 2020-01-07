@@ -22,8 +22,8 @@ var databaseUrl = 'mongodb://192.168.99.100/scrap';
 // .then(()=>console.log("DB server connect"))
 //     .catch(e => console.log("DB error", e));
 
-if (process.env.MONGODB_URI) {
-	mongoose.connect(process.env.MONGODB_URI);
+if (process.env.MONGOLAB_MAROON_URI) {
+	mongoose.connect(process.env.MONGOLAB_MAROON_URI);
 }
 else {
 	mongoose.connect(databaseUrl);
