@@ -15,15 +15,15 @@ var Note = require("./models/Note");
 var Article = require("./models/Article");
 var databaseUrl = 'mongodb://192.168.99.100/scrap';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://192.168.99.100/test';
-mongoose.connect(MONGODB_URI);
+// const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://192.168.99.100/test';
+// mongoose.connect(MONGODB_URI);
 
-// if (process.env.MONGODB_URI) {
-// 	mongoose.connect(process.env.MONGODB_URI);
-// }
-// else {
-// 	mongoose.connect(databaseUrl);
-// };
+if (process.env.MONGODB_URI) {
+	mongoose.connect(process.env.MONGODB_URI);
+}
+else {
+	mongoose.connect(databaseUrl);
+};
 
 mongoose.Promise = Promise;
 var db = mongoose.connection;
