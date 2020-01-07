@@ -18,16 +18,16 @@ var databaseUrl = 'mongodb://192.168.99.100/scrap';
 // const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://192.168.99.100/test';
 // mongoose.connect(MONGODB_URI);
 
-// mongoose.connect('mongodb+srv://dennisitua:54321@scrap-suezx.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true})
-// .then(()=>console.log("DB server connect"))
-//     .catch(e => console.log("DB error", e));
+mongoose.connect('mongodb+srv://dennisitua:54321@scrap-suezx.mongodb.net/test?authSource=admin&replicaSet=scrap-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true', {useNewUrlParser: true})
+.then(()=>console.log("DB server connect"))
+    .catch(e => console.log("DB error", e));
 
-if (process.env.MONGODB_URI) {
-	mongoose.connect(process.env.MONGODB_URI);
-}
-else {
-	mongoose.connect(databaseUrl);
-};
+// if (process.env.MONGODB_URI) {
+// 	mongoose.connect(process.env.MONGODB_URI);
+// }
+// else {
+// 	mongoose.connect(databaseUrl);
+// };
 
 mongoose.Promise = Promise;
 var db = mongoose.connection;
