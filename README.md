@@ -18,12 +18,21 @@ and also delete saved articles from the saved list.
 ## Technology
 
 - Express
+
 - Cherio
+
 - Axios
+
 - Handlebars
+
 - CSS
+
 - jQuery
+
 - node.js
+
 - Mongodb
+
 - Mongoose
+
 - Heroku
