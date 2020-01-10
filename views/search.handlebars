@@ -1,18 +1,90 @@
-{{#each search}}
-<div class="story-body" id={{this._id}}>
-<h2>
-<a href="{{this.link}}" target="_blank">{{this.title}}</a>
-<form action="/save/{{this._id}}" method="POST">
-<button type="submit" class="status" value="{{this.status}}">{{this.status}}</button>
-{{#unless this.note}}
-<button type="button" class="addnote-button" value="{{this._id}}">Add A Note</button>
-{{/unless}}
-{{#if this.note}}
-<button type="button" class="addnote-button" value="{{this._id}}">Edit Note</button>
-{{/if}}
-</form>
-</h2>
-<summary>{{this.summary}}</summary>
-<img class="media" src="{{this.img}}">
+
+<nav class="nav-bar">
+            <img id="cover" src="/assets/images/the nyt.jpg" height="500px">
+</nav>
+<div class="container"></div>    
+
+    <div class="row" class="linkRow">
+        <div class="col-md-4">
+            <a href="/saved" class="upper-link">SAVED ARTICLES</a>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary btn-sm" id="scrapeBtn">SCRAPE</button>
+        </div>
+        <div class="col-md-4">
+            {{!-- <a href="https://www.nytimes.com" class="upper-link">NYTIMES.COM</a> --}}
+            <form action="/search" method="POST">
+			<button type="submit" id="search-submit">Submit</button>
+			<input type="text" name="search" placeholder="Search for articles" id="search-input">
+		</form>
+        </div>
+    </div>
+
+    <hr class="white-underline">
+    <div class="row">
+        {{#each result}}
+        {{#unless saved}}
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+
+            <div class="article">
+                <h2 class="headline">{{headline}}</h2>
+                <ul>
+                    <li class="summary">{{summaryOne}}</li>
+                    <li class="summary">{{summaryTwo}}</li>
+                </ul>
+                <hr>
+                <div class="row" id="bottom-row">
+                    <div class="col-md-6">
+                        <a href={{link}} class="link">FULL STORY</a>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="/update" method="PUT" id="save-article">
+                            <input type="hidden" name="id" value={{_id}}>
+                            <button class="btn btn-lg" id="saveBtn" type="submit">SAVE ARTICLE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+        {{/unless}}
+        {{/each}}
+    </div>
 </div>
-{{/each}}
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#scrapeBtn").on("click", function (event) {
+            event.preventDefault();
+            $.get("/newscrape", function (data) {
+                location.reload();
+            });
+        });
+        $("#save-article").on("click", function (event) {
+            event.preventDefault();
+            console.log("save it!");
+            var id = $(this).children().val();
+            console.log(id);
+            var data = {
+                _id: id
+            }
+            $.ajax("/update/" + id, {
+                type: "PUT",
+                data: data
+            })
+            location.reload();
+        });
+        $("#search-submit")on("click", function (event) {
+            event.preventDefault();
+            console.log("searched!");
+            $.post("/search", function (result){
+                location.reload();
+            });
+        })
+    });
+</script>
