@@ -12,7 +12,7 @@ and also delete saved articles from the saved list.
 
 - https://nytnews-scraperthe14thweb.herokuapp.com/
 
-<a href= "https://nytnews-scraperthe14thweb.herokuapp.com/"><img src="public/assets/images/nyt%scraper%03.png" ></a>
+<a href= "https://nytnews-scraperthe14thweb.herokuapp.com/"><img src="public/assets/images/nytscraper03.png" ></a>
 
 
 ## Technology
