@@ -28,7 +28,6 @@ body {
 	min-width: 200px;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
-    /* margin-top: 10px; */
     border: 2px solid rgb(65, 161, 190);
 }
 
@@ -37,7 +36,6 @@ body {
     height: 80%;
     font-weight: bolder;
     color: rgb(29, 29, 27);
-	/* margin-top: 10px; */
 	height: 63%;
     margin-right: 10px;
     border: 5.5px solid rgb(65, 161, 190);
@@ -210,6 +208,3 @@ a:hover {
     text-align: center;
 }
 
-/* .col-md-12 {
-    margin: 50px;
-} */
