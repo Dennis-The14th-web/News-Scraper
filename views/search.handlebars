@@ -81,7 +81,7 @@
         $("#search-submit")on("click", function (event) {
             event.preventDefault();
             console.log("searched!");
-            $.post("/search", function (result){
+            $.post("/search", function (data){
                 location.reload();
             });
         })

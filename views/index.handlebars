@@ -78,12 +78,5 @@
             })
             location.reload();
         });
-         $("#search-submit")on("click", function (event) {
-            event.preventDefault();
-            console.log("searched!");
-            $.post("/search", function (result){
-                location.reload();
-            });
-        })
     });
 </script>
